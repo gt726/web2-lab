@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sve propusnice</title>
+</head>
+
+<body>
+
+    <h1>Sve digitalne propusnice</h1>
+
+    <% if (passes.length===0) { %>
+
+        <p>Trenutačno nema izdanih propusnica.</p>
+
+        <% } else { %>
+
+            <table cellpadding="8">
+                <thead>
+                    <tr>
+                        <th>Ime i prezime</th>
+                        <th>Broj dokumenta</th>
+                        <th>Datum izdavanja</th>
+                        <th>Status</th>
+                        <th>Detalji</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% passes.forEach(pass=> { %>
+                        <tr>
+                            <td>
+                                <%= pass.name %>
+                            </td>
+                            <td>
+                                <%= pass.document %>
+                            </td>
+                            <td>
+                                <%= new Date(pass.issued_at).toLocaleString("hr-HR") %>
+                            </td>
+                            <td>
+                                <%= pass.status==="ACTIVE" ? "Aktivna" : "Poništena" %>
+                            </td>
+                            <td>
+                                <a href="/passes/info/<%= pass.id %>">Otvori propusnicu</a>
+
+                                <% if (pass.status==="ACTIVE" ) { %>
+                                    <form action="/passes/<%= pass.id %>/cancel" method="POST">
+                                        <button type="submit">Poništi</button>
+                                    </form>
+                                    <% } %>
+                                        <form action="/passes/<%= pass.id %>/delete" method="POST">
+                                            <button type="submit">Izbriši</button>
+                                        </form>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+
+            <% } %>
+
+                <p><a href="/">Povratak na početnu stranicu</a></p>
+
+</body>
+
+</html>

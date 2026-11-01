@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digitalna propusnica</title>
+</head>
+
+<body>
+    <h1>Digitalna propusnica</h1>
+    <p>
+        <strong>Ime i prezime:</strong>
+        <%= pass.name %>
+    </p>
+
+    <p>
+        <strong>Broj dokumenta:</strong>
+        <%= pass.document %>
+    </p>
+
+    <p>
+        <strong>Datum izdavanja:</strong>
+        <%= new Date(pass.issued_at).toLocaleString("hr-HR") %>
+    </p>
+
+    <p>
+        <strong>Status:</strong>
+        <%= pass.status==="ACTIVE" ? "Aktivna" : "Poništena" %>
+    </p>
+
+    <h2>QR kod propusnice:</h2>
+
+    <img src="<%= qrCode %>" alt="QR kod propusnice" width="250" height="250" />
+
+    <a href="/">Povratak na početnu stranicu</a>
+</body>
+
+</html>
