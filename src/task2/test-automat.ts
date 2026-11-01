@@ -9,7 +9,7 @@ async function main() {
     const clientSecret = process.env.M2M_CLIENT_SECRET;
     const scope = "create:passes";
 
-    const url = "http://localhost:3000/passes";
+    const url = "https://web2-lab-f1on.onrender.com/passes";
 
     if (!authority || !audience || !clientId || !clientSecret) {
         throw new Error("Nedostaju potrebne Auth0 varijable u .env datoteci.");
@@ -33,7 +33,7 @@ async function main() {
         url,
         token,
         "Testni Korisnik",
-        "demo"
+        "001234"
     );
 
     console.log("Propusnica je uspješno izdana.");
