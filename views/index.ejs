@@ -39,22 +39,26 @@
             <%= activePasses %>
           </strong></p>
 
-        <form action="/passes/create" method="POST">
-          <div>
-            <label for="name">Ime i prezime:</label>
-            <input type="text" id="name" name="name" required />
-          </div>
+        <% if (isAuthenticated) { %>
 
-          <div>
-            <label for="document">Broj dokumenta:</label>
-            <input type="text" id="document" name="document" required />
-          </div>
+          <form action="/passes/create" method="POST">
+            <div>
+              <label for="name">Ime i prezime:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
 
-          <button type="submit">Kreiraj propusnicu</button>
-        </form>
+            <div>
+              <label for="document">Broj dokumenta:</label>
+              <input type="text" id="document" name="document" required />
+            </div>
 
-        <h2>Upravljanje propusnicama</h2>
-        <a href="/passes">Pregledaj sve propusnice</a>
+            <button type="submit">Kreiraj propusnicu</button>
+          </form>
+
+          <h2>Upravljanje propusnicama</h2>
+          <a href="/passes">Pregledaj sve propusnice</a>
+
+          <% } %>
 </body>
 
 </html>
