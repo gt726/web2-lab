@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Sve propusnice</title>
 </head>
 
@@ -24,7 +25,7 @@
                         <th>Broj dokumenta</th>
                         <th>Datum izdavanja</th>
                         <th>Status</th>
-                        <th>Detalji</th>
+                        <th>Upravljanje</th>
                     </tr>
                 </thead>
 
@@ -44,16 +45,18 @@
                                 <%= pass.status==="ACTIVE" ? "Aktivna" : "Poništena" %>
                             </td>
                             <td>
-                                <a href="/passes/info/<%= pass.id %>">Otvori propusnicu</a>
+                                <div class="edit-buttons">
 
-                                <% if (pass.status==="ACTIVE" ) { %>
-                                    <form action="/passes/<%= pass.id %>/cancel" method="POST">
-                                        <button type="submit">Poništi</button>
-                                    </form>
-                                    <% } %>
-                                        <form action="/passes/<%= pass.id %>/delete" method="POST">
-                                            <button type="submit">Izbriši</button>
+                                    <a href="/passes/info/<%= pass.id %>" class="custom-button">Otvori propusnicu</a>
+                                    <% if (pass.status==="ACTIVE" ) { %>
+                                        <form action="/passes/<%= pass.id %>/cancel" method="POST">
+                                            <button type="submit" class="cancel-button">Poništi</button>
                                         </form>
+                                        <% } %>
+                                            <form action="/passes/<%= pass.id %>/delete" method="POST">
+                                                <button type="submit" class="delete-button">Izbriši</button>
+                                            </form>
+                                </div>
                             </td>
                         </tr>
                         <% }) %>
@@ -62,7 +65,7 @@
 
             <% } %>
 
-                <p><a href="/">Povratak na početnu stranicu</a></p>
+                <p><a href="/" class="custom-button">Povratak na početnu stranicu</a></p>
 
 </body>
 

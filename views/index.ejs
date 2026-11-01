@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/style.css">
   <title>
     <%= title %>
   </title>
@@ -11,54 +12,66 @@
 
 <body>
 
-  <% if (isAuthenticated) { %>
-    <p>
-      Prijavljeni ste kao:
-      <strong>
-        <%= user.name %>
-      </strong>
-    </p>
-    <a href="/logout">Odjava</a>
-    <% } else { %>
-      <a href="/login">Prijava</a>
-      <% } %>
+  <div class="header">
 
-        <h1>
-          <%= title %>
-        </h1>
+    <div>
+      <h1>
+        <%= title %>
+      </h1>
 
-        <p>Dobrodošli u aplikaciju digitalnih propusnica.</p>
+      <p>Dobrodošli u aplikaciju za upravljanje digitalnim propusnicama.</p>
+    </div>
 
-        <h2>Statistika propusnica</h2>
-
-        <p>Ukupan broj propusnica: <strong>
-            <%= totalPasses %>
-          </strong></p>
-
-        <p>Broj aktivnih propusnica: <strong>
-            <%= activePasses %>
-          </strong></p>
-
-        <% if (isAuthenticated) { %>
-
-          <form action="/passes/create" method="POST">
-            <div>
-              <label for="name">Ime i prezime:</label>
-              <input type="text" id="name" name="name" required />
-            </div>
-
-            <div>
-              <label for="document">Broj dokumenta:</label>
-              <input type="text" id="document" name="document" required />
-            </div>
-
-            <button type="submit">Kreiraj propusnicu</button>
-          </form>
-
-          <h2>Upravljanje propusnicama</h2>
-          <a href="/passes">Pregledaj sve propusnice</a>
-
+    <div class="login-info">
+      <% if (isAuthenticated) { %>
+        <p>
+          Prijavljeni ste kao:
+          <strong>
+            <%= user.name %>
+          </strong>
+        </p>
+        <a href="/logout" class="custom-button">Odjava</a>
+        <% } else { %>
+          <a href="/login" class="custom-button">Prijava</a>
           <% } %>
+    </div>
+
+  </div>
+
+  <h2>Statistika propusnica</h2>
+
+  <p>Ukupan broj propusnica: <strong>
+      <%= totalPasses %>
+    </strong></p>
+
+  <p>Broj aktivnih propusnica: <strong>
+      <%= activePasses %>
+    </strong></p>
+
+  <% if (isAuthenticated) { %>
+
+    <h2>Kreiranje propusnica</h2>
+
+    <form action="/passes/create" method="POST">
+      <div class="user-input">
+        <div>
+          <label for="name">Ime i prezime:</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+
+        <div>
+          <label for="document">Broj dokumenta:</label>
+          <input type="text" id="document" name="document" required />
+        </div>
+      </div>
+
+      <button type="submit">Kreiraj propusnicu</button>
+    </form>
+
+    <h2>Upravljanje propusnicama</h2>
+    <a href="/passes" class="custom-button">Pregledaj sve propusnice</a>
+
+    <% } %>
 </body>
 
 </html>

@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css">
     <title>Digitalna propusnica</title>
 </head>
 
@@ -33,8 +34,10 @@
 
     <img src="<%= qrCode %>" alt="QR kod propusnice" width="250" height="250" />
 
-    <a href="/passes">Povratak na popis propusnica</a>
-    <a href="/">Povratak na početnu stranicu</a>
+    <div class="pass-nav">
+        <a href="/passes" class="custom-button">Povratak na popis propusnica</a>
+        <a href="/" class="custom-button">Povratak na početnu stranicu</a>
+    </div>
 </body>
 
 </html>
